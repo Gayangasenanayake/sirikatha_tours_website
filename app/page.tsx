@@ -1,0 +1,105 @@
+'use client'
+
+import { useEffect, useState } from 'react'
+import {
+  ArrowRight,
+  Check,
+  Compass,
+  Heart,
+  Mountain,
+  Send,
+  ShieldCheck,
+  TrainFront,
+  Utensils,
+} from 'lucide-react'
+import { SiteFooter, SiteHeader } from '@/components/site-shell'
+
+const heroSlides = [
+  { image: '/images/sri-lanka-culture.png', alt: 'Sri Lankan Kandyan dancer near an ancient temple', eyebrow: 'Living culture, timeless spirit', title: 'Meet the soul', accent: 'of Sri Lanka.', description: 'Share stories, rituals and flavours with the people who make this island unforgettable.' },
+  { image: '/images/sri-lanka-wildlife.png', alt: 'Asian elephant in Sri Lankan golden grassland', eyebrow: 'Wildlife, without the rush', title: 'Walk on the', accent: 'wild side.', description: 'Meet elephants, leopards and colourful birdlife in landscapes that still feel wonderfully untamed.' },
+  { image: '/images/sri-lanka-sigiriya.png', alt: 'Sigiriya Rock Fortress rising above Sri Lankan jungle', eyebrow: 'Ancient wonder, wild heart', title: 'Stand above', accent: 'the treetops.', description: 'Climb into Sri Lanka’s legendary past at Sigiriya, where history rises from the jungle canopy.' },
+  { image: '/images/sri-lanka-hero.png', alt: 'Sri Lankan tea hills and a train at golden hour', eyebrow: 'Highlands wrapped in mist', title: 'Take the scenic', accent: 'way home.', description: 'Follow the winding rails through tea country, waterfalls and cloud-soft mountain mornings.' },
+  { image: '/images/sri-lanka-beach.png', alt: 'Sri Lankan tropical beach with a traditional fishing boat', eyebrow: 'Beach escapes, slow days', title: 'Find your', accent: 'perfect shore.', description: 'Trade the ordinary for golden beaches, warm seas and a little more time beside the Indian Ocean.' },
+  { image: '/images/sri-lanka-hills.png', alt: 'Sri Lankan tea plantation in the misty hill country', eyebrow: 'A taste of the highlands', title: 'Breathe in', accent: 'the green.', description: 'Rise above the heat for cool air, endless tea gardens and the gentle rhythm of hill-country life.' },
+]
+
+const destinations = [
+  { name: 'Sigiriya', type: 'Ancient wonder', image: '/images/sigiriya-dawn.png', pos: 'center' },
+  { name: 'Galle Fort', type: 'Coastal heritage', image: '/images/galle-fort-dusk.png', pos: 'center' },
+  { name: 'Ella', type: 'Highland escape', image: '/images/ella-mist.png', pos: 'center' },
+  { name: 'Mirissa', type: 'Wild coast', image: '/images/mirissa-coast.png', pos: 'center' },
+  { name: 'Kandy', type: 'Cultural heartland', image: '/images/kandy-lake.png', pos: 'center' },
+  { name: 'Yala', type: 'Wildlife country', image: '/images/yala-wild.png', pos: 'center' },
+  { name: 'Arugam Bay', type: 'Surf coast', image: '/images/arugam-bay.png', pos: 'center' },
+  { name: 'Nuwara Eliya', type: 'Tea country', image: '/images/nuwara-eliya.png', pos: 'center' },
+]
+
+const services = [
+  { icon: Mountain, title: 'Curated journeys', text: 'Thoughtfully designed routes that reveal the island’s wild heart and living culture.', image: '/images/sri-lanka-journey.png', alt: 'Scenic Sri Lankan road winding through green highlands', href: '/curated-journeys' },
+  { icon: ShieldCheck, title: 'Stay your way', text: 'From barefoot beach villas to colonial estates, find a stay with a story.', image: '/images/sri-lanka-stay.png', alt: 'Boutique Sri Lankan villa with a private pool and tropical garden', href: '/stay-your-way' },
+  { icon: TrainFront, title: 'Every vehicle, arranged', text: 'We can arrange any kind of vehicle for every kind of tour, from private cars and vans to luxury coaches and scenic transfers.', image: '/images/sri-lanka-luxury-vehicle.png', alt: 'Luxury SUV prepared for a private Sri Lankan tour', href: '/tours-vehicles' },
+  { icon: Utensils, title: 'Taste the island', text: 'Meet makers, share family recipes and savour flavours you will remember.', image: '/images/sri-lanka-food.png', alt: 'Traditional Sri Lankan rice and curry spread with tropical ingredients', href: '/taste-the-island' },
+]
+
+const packages = [
+  { days: '05 days', title: 'The Golden Triangle', route: 'Colombo · Sigiriya · Kandy · Ella', image: '/images/route-golden-triangle.png', alt: 'Ancient Sigiriya landscape for a Golden Triangle journey', price: 'From $890' },
+  { days: '07 days', title: 'Wild Coast to Hill Country', route: 'Yala · Galle · Mirissa · Nuwara Eliya', image: '/images/route-wild-coast.png', alt: 'Safari vehicle crossing Sri Lankan wild country', price: 'From $1,280' },
+  { days: '04 days', title: 'Tea & Tide', route: 'Ella · Haputale · Weligama · Galle', image: '/images/route-tea-tide.png', alt: 'Tea hills descending toward Sri Lanka’s southern coast', price: 'From $720' },
+]
+
+export default function Page() {
+  const [email, setEmail] = useState('')
+  const [subscribed, setSubscribed] = useState(false)
+  const [activeSlide, setActiveSlide] = useState(0)
+
+  useEffect(() => {
+    const timer = window.setInterval(() => setActiveSlide((current) => (current + 1) % heroSlides.length), 6000)
+    return () => window.clearInterval(timer)
+  }, [])
+
+  return (
+    <main className="min-h-screen overflow-hidden bg-[#f7f5ef] text-[#173f3b]">
+      <section className="relative min-h-[620px] overflow-hidden bg-[#173f3b] text-white sm:min-h-[620px] lg:min-h-[620px]">
+        {heroSlides.map((slide, index) => <img key={slide.image} src={slide.image} alt={slide.alt} aria-hidden={index !== activeSlide} className={`absolute inset-0 h-full w-full object-cover object-center transition-opacity duration-1000 ${index === activeSlide ? 'opacity-80' : 'opacity-0'}`} />)}
+        <div className="absolute inset-0 bg-gradient-to-r from-[#092f2d]/90 via-[#123d3a]/55 to-[#123d3a]/10" />
+        <SiteHeader />
+        <div id="top" className="relative z-10 mx-auto flex max-w-7xl flex-col justify-center px-6 pb-10 pt-24 sm:pb-8 lg:min-h-[470px] lg:px-10 lg:pt-28">
+          <div className="hero-copy-enter min-h-[235px]" key={activeSlide}>
+            <p className="mb-5 flex items-center gap-3 text-xs font-semibold uppercase tracking-[0.28em] text-[#f3bf62]"><span className="h-px w-8 bg-[#f3bf62]" /> {heroSlides[activeSlide].eyebrow}</p>
+            <h1 className="max-w-3xl font-serif text-[3.7rem] leading-[.96] tracking-[-.045em] sm:text-7xl lg:text-[6.25rem] xl:text-[6.8rem]">{heroSlides[activeSlide].title}<br /><em className="font-normal text-[#f3bf62]">{heroSlides[activeSlide].accent}</em></h1>
+            <p className="mt-7 max-w-md text-base leading-7 text-white/80">{heroSlides[activeSlide].description}</p>
+          </div>
+        </div>
+        <div className="absolute right-6 top-28 z-10 flex items-center gap-3 sm:right-10 lg:top-32">
+          <div className="flex gap-2" aria-label="Hero slides">{heroSlides.map((slide, index) => <button key={slide.image} type="button" aria-label={`Show slide ${index + 1}`} aria-current={index === activeSlide} onClick={() => setActiveSlide(index)} className={`h-1.5 rounded-full transition-all ${index === activeSlide ? 'w-10 bg-[#f3bf62]' : 'w-5 bg-white/50 hover:bg-white'}`} />)}</div>
+          <span className="text-xs font-semibold tracking-widest text-white/70">{String(activeSlide + 1).padStart(2, '0')} / {String(heroSlides.length).padStart(2, '0')}</span>
+        </div>
+        <div className="relative z-10 mx-auto mt-2 w-full max-w-7xl px-6 pb-8 sm:px-10 lg:mt-0 lg:px-10 lg:pb-10">
+          <div className="flex flex-col gap-4 sm:flex-row sm:items-center sm:justify-between sm:gap-6">
+            <div><p className="text-[10px] font-bold uppercase tracking-[0.22em] text-[#f3bf62]">Ready when you are</p><p className="mt-1 font-serif text-xl sm:text-2xl">Your Sri Lanka starts here.</p></div>
+            <div className="flex shrink-0 flex-wrap gap-2"><a href="/adventures" className="inline-flex items-center justify-center gap-2 rounded-full border border-white/30 px-4 py-2.5 text-xs font-semibold text-white transition hover:border-white hover:bg-white/10 sm:px-5 sm:text-sm">Explore activities</a><a href="/plan-trip" className="inline-flex items-center justify-center gap-2 rounded-full bg-[#e7a94b] px-4 py-2.5 text-xs font-bold text-[#173f3b] transition hover:bg-[#f3bf62] sm:px-5 sm:text-sm">Book your plan <ArrowRight size={15} /></a></div>
+          </div>
+        </div>
+      </section>
+
+      <section id="services" className="relative overflow-hidden bg-[#e6ece4] px-6 pb-24 pt-32 lg:px-10 lg:pt-40"><img src="/images/sri-lanka-journey.png" alt="" aria-hidden="true" className="pointer-events-none absolute inset-0 h-full w-full object-cover opacity-[0.18] mix-blend-multiply" /><div className="pointer-events-none absolute inset-0 bg-[#f7f5ef]/35" /><div className="relative z-10 mx-auto max-w-7xl"><div className="grid gap-12 lg:grid-cols-[.75fr_1.65fr]"><div><p className="eyebrow">Travel, considered</p><h2 className="section-title mt-4 max-w-sm">Not just a trip.<br /><em>A feeling.</em></h2></div><div><p className="max-w-xl text-lg leading-8 text-[#55736d]">Sri Lanka rewards the curious. Sirikatha Tours brings together local knowledge, stays, experiences and the right vehicle for every kind of tour to create journeys that feel entirely your own.</p><div className="mt-10 grid gap-5 sm:grid-cols-2">{services.map(({ icon: Icon, title, text, image, alt, href }) => <a href={href} key={title} className="group overflow-hidden rounded-2xl border border-[#d8ddd4] bg-white transition duration-300 hover:-translate-y-1 hover:border-[#d38b30]/50 hover:shadow-xl hover:shadow-[#173f3b]/10"><div className="relative h-40 overflow-hidden"><img src={image} alt={alt} className="h-full w-full object-cover transition duration-700 group-hover:scale-105" /><div className="absolute inset-0 bg-gradient-to-t from-[#173f3b]/65 to-transparent" /><span className="absolute bottom-3 left-4 flex size-10 items-center justify-center rounded-full border border-white/50 bg-[#173f3b]/75 text-[#f3bf62] backdrop-blur-sm"><Icon size={19} strokeWidth={1.6} /></span></div><div className="p-5"><h3 className="font-serif text-2xl text-[#173f3b]">{title}</h3><p className="mt-3 text-sm leading-6 text-[#668079]">{text}</p><span className="mt-5 inline-flex items-center text-xs font-bold uppercase tracking-widest text-[#d38b30] transition group-hover:gap-2">Explore details <ArrowRight className="ml-1" size={14} /></span></div></a>)}</div></div></div></div></section>
+
+      <section id="destinations" className="bg-[#e6ece4] px-6 py-24 lg:px-10"><div className="mx-auto max-w-7xl"><div className="flex flex-col justify-between gap-5 sm:flex-row sm:items-end"><div><p className="eyebrow">Places to fall for</p><h2 className="section-title mt-3">The island, <em>unfiltered.</em></h2></div><a href="/journeys" className="flex items-center gap-2 text-sm font-semibold text-[#d38b30]">View all destinations <ArrowRight size={16} /></a></div><div className="mt-12 grid gap-4 sm:grid-cols-2 lg:grid-flow-dense lg:grid-cols-12 lg:auto-rows-[220px]"><div className="pointer-events-none absolute" />{destinations.map((destination, index) => <a href="/plan-trip" key={destination.name} className={`group relative min-h-[280px] overflow-hidden rounded-[1.75rem] lg:min-h-0 ${index === 0 ? 'lg:col-span-6 lg:row-span-2' : index === 1 ? 'lg:col-span-3 lg:row-span-2' : index === 2 ? 'lg:col-span-3' : index === 3 ? 'lg:col-span-6' : index === 4 ? 'lg:col-span-3' : index === 5 ? 'lg:col-span-3' : index === 6 ? 'lg:col-span-6' : 'lg:col-span-6'}`}><img src={destination.image} alt={destination.name} className="absolute inset-0 h-full w-full object-cover object-center transition duration-700 group-hover:scale-105" style={{ objectPosition: destination.pos }} /><div className="absolute inset-0 bg-gradient-to-t from-[#092f2d]/90 via-[#092f2d]/10 to-transparent" /><div className="absolute left-5 top-5 flex items-center gap-2"><span className="flex size-8 items-center justify-center rounded-full border border-white/40 bg-white/15 text-xs font-bold text-white backdrop-blur-sm">0{index + 1}</span><span className="h-px w-8 bg-[#f3bf62]" /></div><div className="absolute inset-x-0 bottom-0 flex items-end justify-between gap-4 p-5 text-white sm:p-6"><div><p className="mb-2 text-[10px] font-bold uppercase tracking-[0.2em] text-[#f3bf62]">{destination.type}</p><h3 className={`${index === 0 ? 'text-4xl sm:text-5xl' : 'text-3xl'} font-serif`}>{destination.name}</h3></div><span className="flex size-10 shrink-0 items-center justify-center rounded-full border border-white/35 bg-white/10 backdrop-blur-sm transition duration-300 group-hover:-rotate-45 group-hover:bg-[#e7a94b] group-hover:text-[#173f3b]"><ArrowRight size={16} /></span></div></a>)}</div></div></section>
+
+      <section id="journeys" className="relative overflow-hidden bg-[#173f3b] px-6 py-24 text-white lg:px-10 lg:py-32"><img src="/images/route-golden-triangle.png" alt="Sri Lankan road through golden countryside" className="absolute inset-0 h-full w-full object-cover opacity-35" /><div className="absolute inset-0 bg-gradient-to-r from-[#092f2d]/95 via-[#173f3b]/75 to-[#173f3b]/35" /><div className="relative z-10 mx-auto max-w-7xl"><div className="max-w-3xl"><p className="eyebrow text-[#f3bf62]">Take the scenic route</p><h2 className="mt-4 max-w-2xl font-serif text-5xl leading-[.98] tracking-[-.04em] sm:text-6xl">Your trip should feel <em className="text-[#f3bf62]">uniquely yours.</em></h2><p className="mt-7 max-w-xl text-lg leading-8 text-white/80">We do not sell fixed packages. Tell us what you are dreaming about, and our local team will shape a thoughtful journey around your pace, interests, people and budget.</p></div><div className="mt-12 grid gap-4 sm:grid-cols-3"><div className="rounded-2xl border border-white/20 bg-white/10 p-6 backdrop-blur-sm"><p className="font-serif text-2xl">Share your idea</p><p className="mt-2 text-sm leading-6 text-white/70">A beach escape, a family adventure, or something completely different.</p></div><div className="rounded-2xl border border-white/20 bg-white/10 p-6 backdrop-blur-sm"><p className="font-serif text-2xl">We shape the details</p><p className="mt-2 text-sm leading-6 text-white/70">Routes, stays, vehicles and experiences chosen around you.</p></div><div className="rounded-2xl border border-white/20 bg-white/10 p-6 backdrop-blur-sm"><p className="font-serif text-2xl">Connect your way</p><p className="mt-2 text-sm leading-6 text-white/70">Start a personal conversation by WhatsApp, email or WeChat.</p></div></div><div className="mt-10 flex flex-wrap gap-3"><a href="https://wa.me/94112345678" target="_blank" rel="noreferrer" className="inline-flex items-center rounded-full bg-[#25D366] px-5 py-3 text-sm font-semibold text-white transition hover:bg-[#20bd5a]">WhatsApp us</a><a href="mailto:hello@sirikathatours.lk" className="inline-flex items-center rounded-full bg-[#e7a94b] px-5 py-3 text-sm font-semibold text-[#173f3b] transition hover:bg-[#f3bf62]">Email our team</a><a href="/plan-trip?contact=wechat" className="inline-flex items-center rounded-full border border-white/35 px-5 py-3 text-sm font-semibold text-white transition hover:bg-white/10">WeChat enquiry</a></div></div></section>
+
+      <section className="relative isolate overflow-hidden bg-[#173f3b] px-6 py-24 text-white lg:px-10"><img src="/images/kandy-perahera-promise.png" alt="Kandy Esala Perahera procession in Sri Lanka" className="absolute inset-0 z-0 h-full w-full object-cover object-center" /><div className="absolute inset-0 z-10 bg-gradient-to-r from-[#092f2d]/90 via-[#173f3b]/50 to-[#173f3b]/15" /><div className="absolute inset-0 z-10 bg-gradient-to-t from-[#092f2d]/45 via-transparent to-[#092f2d]/10" /><div className="relative z-20 mx-auto grid max-w-7xl gap-14 lg:grid-cols-[.9fr_1.1fr] lg:items-center"><div className="max-w-xl drop-shadow-[0_3px_12px_rgba(0,0,0,.7)]"><p className="eyebrow text-[#f3bf62]">A promise from us</p><h2 className="mt-4 max-w-xl font-serif text-5xl font-semibold leading-[.98] tracking-[-.04em] text-white drop-shadow-[0_4px_14px_rgba(0,0,0,.85)] sm:text-6xl">The details make<br /><em className="text-[#f8ca73]">the difference.</em></h2><p className="mt-7 max-w-md leading-7 text-white/90">From luxury cars to private coaches, our local team arranges the right vehicle and support for every part of your journey.</p><a href="/plan-trip" className="mt-8 inline-flex items-center gap-2 rounded-full bg-[#e7a94b] px-6 py-3.5 text-sm font-semibold text-[#173f3b]">Arrange my vehicle <ArrowRight size={16} /></a></div><div className="grid grid-cols-2 gap-x-8 gap-y-10 border-t border-white/15 pt-8 sm:grid-cols-4 lg:border-l lg:border-t-0 lg:pl-12 lg:pt-0"><div><p className="font-serif text-4xl text-[#f3bf62]">10k+</p><p className="mt-2 text-xs uppercase tracking-widest text-white/75">Happy travellers</p></div><div><p className="font-serif text-4xl text-[#f3bf62]">25</p><p className="mt-2 text-xs uppercase tracking-widest text-white/75">Years local</p></div><div><p className="font-serif text-4xl text-[#f3bf62]">4.9</p><p className="mt-2 text-xs uppercase tracking-widest text-white/75">Guest rating</p></div><div><p className="font-serif text-4xl text-[#f3bf62]">24/7</p><p className="mt-2 text-xs uppercase tracking-widest text-white/75">On island</p></div></div></div></section>
+
+      <section id="journal" className="mx-auto max-w-7xl px-6 py-28 lg:px-10"><div className="flex items-end justify-between"><div><p className="eyebrow">Travel by vehicle</p><h2 className="section-title mt-3">The right ride, <em>every time.</em></h2></div><a href="/journal" className="hidden items-center gap-2 text-sm font-semibold sm:flex">View all vehicles <ArrowRight size={16} /></a></div><div className="mt-10 grid gap-8 md:grid-cols-3"><article><div className="overflow-hidden rounded-2xl"><img src="/images/sri-lanka-luxury-vehicle.png" alt="Luxury SUV prepared for a private Sri Lankan tour" className="h-56 w-full object-cover transition duration-500 hover:scale-105" /></div><p className="eyebrow mt-5">Luxury touring</p><h3 className="mt-2 font-serif text-2xl">Arrive in comfort and style</h3></article><article><div className="overflow-hidden rounded-2xl"><img src="/images/sri-lanka-vehicle.png" alt="Traveller looking out over a tropical landscape" className="h-56 w-full object-cover transition duration-500 hover:scale-105" /></div><p className="eyebrow mt-5">Private transfers</p><h3 className="mt-2 font-serif text-2xl">A vehicle for every route</h3></article><article><div className="overflow-hidden rounded-2xl"><img src="/images/car-fleet.png" alt="Luxury SUV, sedan, touring van, and coach arranged for Sri Lankan travel" className="h-56 w-full object-cover transition duration-500 hover:scale-105" /></div><p className="eyebrow mt-5">Flexible fleet</p><h3 className="mt-2 font-serif text-2xl">Cars for city roads and wild country</h3></article></div></section>
+
+      <section id="plan" className="px-6 pb-24 lg:px-10"><div className="relative mx-auto max-w-7xl overflow-hidden rounded-3xl bg-[#173f3b] px-7 py-12 text-white sm:px-14 lg:flex lg:items-center lg:justify-between"><img src="/images/adventure-newsletter-bg.png" alt="Whitewater rafting adventure in Sri Lanka" className="absolute inset-0 h-full w-full object-cover" /><div className="absolute inset-0 bg-gradient-to-r from-[#092f2d]/90 via-[#173f3b]/70 to-[#173f3b]/35" /><div className="relative z-10"><div><p className="eyebrow text-[#f3bf62]">Your inbox, upgraded</p><h2 className="mt-3 max-w-lg font-serif text-4xl leading-tight text-white drop-shadow sm:text-5xl">A little inspiration,<br /><em className="text-[#f8ca73]">delivered.</em></h2></div><div className="relative z-10 mt-8 max-w-md lg:mt-0">{subscribed ? <div className="flex items-center gap-3 font-semibold text-[#173f3b]"><Check size={20} /> You are on the list. See you soon.</div> : <form onSubmit={(event) => { event.preventDefault(); if (email) setSubscribed(true) }} className="flex border-b border-[#173f3b]/40 pb-3"><input value={email} onChange={(event) => setEmail(event.target.value)} type="email" placeholder="Your email address" aria-label="Email address" className="min-w-0 flex-1 bg-transparent text-sm text-white placeholder:text-white/60 outline-none" required /><button aria-label="Subscribe" className="text-[#173f3b] transition hover:translate-x-1"><Send size={20} /></button></form>}<p className="mt-4 text-xs text-white/75">Travel notes, new journeys and the occasional good excuse to book a flight.</p></div></div></div></section>
+
+      <SiteFooter />
+    </main>
+  )
+}
+
+// Shared typography utilities keep the page's editorial rhythm consistent.
+const styles = `
+`
+
