@@ -9,26 +9,26 @@ const regions = [
     description: 'Seafood, sunset tables and relaxed island cooking from Galle to Mirissa.',
     restaurants: [
       { name: 'The Tuna & The Crab', place: 'Galle Fort', detail: 'Fresh-catch seafood in the heart of the fort.', image: '/images/restaurant-seafood-galle.png', menu: 'https://www.thefortprinters.com/dining/' },
-      { name: 'Dewmini Roti Shop', place: 'Mirissa', detail: 'A beloved local stop for hoppers, roti and curry.', image: '/images/restaurant-seafood-galle.png', menu: 'https://www.google.com/maps/search/Dewmini+Roti+Shop+Mirissa' },
-      { name: 'A Minute by Tuk Tuk', place: 'Galle Fort', detail: 'Casual Sri Lankan plates with a harbour view.', image: '/images/restaurant-seafood-galle.png', menu: 'https://www.google.com/maps/search/A+Minute+by+Tuk+Tuk+Galle' },
+      { name: 'Dewmini Roti Shop', place: 'Mirissa', detail: 'A beloved local stop for hoppers, roti and curry.', image: '/images/restaurant-mirissa-roti.png', menu: 'https://www.google.com/maps/search/Dewmini+Roti+Shop+Mirissa' },
+      { name: 'A Minute by Tuk Tuk', place: 'Galle Fort', detail: 'Casual Sri Lankan plates with a harbour view.', image: '/images/restaurant-galle-tuktuk.png', menu: 'https://www.google.com/maps/search/A+Minute+by+Tuk+Tuk+Galle' },
     ],
   },
   {
     name: 'Hill Country',
     description: 'Cool-climate cafés, tea-country kitchens and beautiful views around Ella and Kandy.',
     restaurants: [
-      { name: 'Matey Hut', place: 'Ella', detail: 'Homestyle Sri Lankan food, made with care.', image: '/images/restaurant-hill-country.png', menu: 'https://www.google.com/maps/search/Matey+Hut+Ella' },
-      { name: 'Cafe Chill', place: 'Ella', detail: 'An easygoing perch for slow lunches and mountain air.', image: '/images/restaurant-hill-country.png', menu: 'https://www.google.com/maps/search/Cafe+Chill+Ella' },
-      { name: 'The Empire Café', place: 'Kandy', detail: 'Heritage dining beside the Temple of the Tooth.', image: '/images/restaurant-hill-country.png', menu: 'https://www.google.com/maps/search/The+Empire+Cafe+Kandy' },
+      { name: 'Matey Hut', place: 'Ella', detail: 'Homestyle Sri Lankan food, made with care.', image: '/images/restaurant-ella-matey.png', menu: 'https://www.google.com/maps/search/Matey+Hut+Ella' },
+      { name: 'Cafe Chill', place: 'Ella', detail: 'An easygoing perch for slow lunches and mountain air.', image: '/images/restaurant-ella-cafe.png', menu: 'https://www.google.com/maps/search/Cafe+Chill+Ella' },
+      { name: 'The Empire Café', place: 'Kandy', detail: 'Heritage dining beside the Temple of the Tooth.', image: '/images/restaurant-kandy-empire.png', menu: 'https://www.google.com/maps/search/The+Empire+Cafe+Kandy' },
     ],
   },
   {
     name: 'Cultural Triangle',
     description: 'Regional recipes, garden dining and memorable meals near Sigiriya and Dambulla.',
     restaurants: [
-      { name: 'Nirwana Restaurant', place: 'Sigiriya', detail: 'A welcoming place for classic island flavours.', image: '/images/restaurant-village-feast.png', menu: 'https://www.google.com/maps/search/Nirwana+Restaurant+Sigiriya' },
-      { name: 'Gamagedara Village Food', place: 'Sigiriya', detail: 'A village-style meal surrounded by greenery.', image: '/images/restaurant-village-feast.png', menu: 'https://www.google.com/maps/search/Gamagedara+Village+Food+Sigiriya' },
-      { name: 'Dewata Villas', place: 'Dambulla', detail: 'Local cooking and a calm garden setting.', image: '/images/restaurant-village-feast.png', menu: 'https://www.google.com/maps/search/Dewata+Villas+Dambulla' },
+      { name: 'Nirwana Restaurant', place: 'Sigiriya', detail: 'A welcoming place for classic island flavours.', image: '/images/restaurant-sigiriya-nirwana.png', menu: 'https://www.google.com/maps/search/Nirwana+Restaurant+Sigiriya' },
+      { name: 'Gamagedara Village Food', place: 'Sigiriya', detail: 'A village-style meal surrounded by greenery.', image: '/images/restaurant-sigiriya-village.png', menu: 'https://www.google.com/maps/search/Gamagedara+Village+Food+Sigiriya' },
+      { name: 'Dewata Villas', place: 'Dambulla', detail: 'Local cooking and a calm garden setting.', image: '/images/restaurant-dambulla-garden.png', menu: 'https://www.google.com/maps/search/Dewata+Villas+Dambulla' },
     ],
   },
 ]
