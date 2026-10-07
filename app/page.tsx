@@ -61,7 +61,7 @@ export default function Page() {
 
   return (
     <main className="min-h-screen overflow-hidden bg-[#f7f5ef] text-[#173f3b]">
-      <section className="relative min-h-[620px] overflow-hidden bg-[#173f3b] text-white sm:min-h-[620px] lg:min-h-[620px]">
+      <section className="relative flex min-h-[100svh] flex-col overflow-hidden bg-[#173f3b] text-white">
         {heroSlides.map((slide, index) => <img key={slide.image} src={slide.image} alt={slide.alt} aria-hidden={index !== activeSlide} className={`absolute inset-0 h-full w-full object-cover object-center transition-opacity duration-1000 ${index === activeSlide ? 'opacity-80' : 'opacity-0'}`} />)}
         <div className="absolute inset-0 bg-gradient-to-r from-[#092f2d]/90 via-[#123d3a]/55 to-[#123d3a]/10" />
         <SiteHeader />
